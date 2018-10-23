@@ -1,0 +1,8 @@
+Câu 1: Li?t kê tên, tu?i, t?nh thành nh?ng sinh viên thu?c nu?c vi?t nam.
+ SELECT sinhvien.tensv, YEAR(CURRENT_DATE) - YEAR(sinhvien.ngaysinh) AS tuoi, tinhthanhpho.tentinh, nuoc.tennuoc, nationaly.tennuoc AS quoctich FROM (((sinhvien LEFT JOIN tinhthanhpho ON sinhvien.matinh = tinhthanhpho.matinh) LEFT JOIN nuoc ON sinhvien.manuoc = nuoc.manuoc) LEFT JOIN nuoc nationaly on sinhvien.maquoctich = nationaly.manuoc) WHERE nuoc.tennuoc = "Vi?t Nam"
+
+Câu 2: Li?t kê tên, tu?i, t?nh thành nh?ng sinh viên nu?c Vi?t Nam và qu?c t?ch Vi?t Nam.
+SELECT sinhvien.tensv, YEAR(CURRENT_DATE) - YEAR(sinhvien.ngaysinh) AS tuoi, tinhthanhpho.tentinh, nuoc.tennuoc, nationaly.tennuoc AS quoctich FROM (((sinhvien LEFT JOIN tinhthanhpho ON sinhvien.matinh = tinhthanhpho.matinh) LEFT JOIN nuoc ON sinhvien.manuoc = nuoc.manuoc) LEFT JOIN nuoc nationaly on sinhvien.maquoctich = nationaly.manuoc) WHERE nuoc.tennuoc = "Vi?t Nam" AND nationaly.tennuoc = "Vi?t Nam"
+ 
+Câu 3: Li?t kê sinh viên th?ng kê các di?m môn h?c chính quy.
+SELECT sinhvien.tensv, YEAR(CURRENT_DATE) - YEAR(sinhvien.ngaysinh) AS tuoi, tinhthanhpho.tentinh, nuoc.tennuoc, nationaly.tennuoc AS quoctich, lophocchinhquy.tenlop, diemhocchinhquy.monlp1, diemhocchinhquy.monlp2, diemhocchinhquy.monlp3, diemhocchinhquy.monlp4,diemhocchinhquy.monlp5 FROM (((((sinhvien LEFT JOIN tinhthanhpho ON sinhvien.matinh = tinhthanhpho.matinh) LEFT JOIN nuoc ON sinhvien.manuoc = nuoc.manuoc) LEFT JOIN nuoc nationaly on sinhvien.maquoctich = nationaly.manuoc) LEFT JOIN lophocchinhquy ON sinhvien.malop = lophocchinhquy.malop) LEFT JOIN diemhocchinhquy ON sinhvien.masv = diemhocchinhquy.masv)
