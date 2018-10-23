@@ -1,0 +1,24 @@
+Bai 1.
+SELECT SinhVien.TenSV, SinhVien.NgaySinh, TinhThanh.TenTinhThanh
+FROM ((SinhVien 
+INNER JOIN TinhThanh ON SinhVien.TinhThanhPho = TinhThanh.MaTinhThanh)
+INNER JOIN QuocTich ON SinhVien.QuocTich = QuocTich.id) 
+WHERE SinhVien.QuocTich = 704
+
+
+Bai 2.
+SELECT SinhVien.TenSV, SinhVien.NgaySinh, TinhThanh.TenTinhThanh
+FROM ((SinhVien 
+INNER JOIN TinhThanh ON SinhVien.TinhThanhPho = TinhThanh.MaTinhThanh)
+INNER JOIN QuocTich ON SinhVien.QuocTich = QuocTich.id)
+WHERE SinhVien.QuocTich = 704 AND SinhVien.Nuoc = 704
+
+Bai 3.
+SELECT SinhVien.TenSV, SinhVien.NgaySinh, TinhThanh.TenTinhThanh, QuocTich.TenNuoc,
+LopHocChinhQuy.TenLop,DiemHocChinhQuy.LP1,DiemHocChinhQuy.LP2,DiemHocChinhQuy.LP3,
+YEAR(CURRENT_DATE) - YEAR(SinhVien.NgaySinh)  AS Tuoi
+FROM ((((SinhVien 
+INNER JOIN TinhThanh ON SinhVien.TinhThanhPho = TinhThanh.MaTinhThanh)
+INNER JOIN QuocTich ON SinhVien.QuocTich = QuocTich.id)
+INNER JOIN DiemHocChinhQuy ON SinhVien.MaSV = DiemHocChinhQuy.MaSV)
+INNER JOIN LopHocChinhQuy ON SinhVien.MaLop = LopHocChinhQuy.MaLop)
