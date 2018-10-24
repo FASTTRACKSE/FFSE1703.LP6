@@ -1,3 +1,5 @@
 Cau 1: SELECT sinhvien.ten_sv, YEAR(CURRENT_DATE()) - YEAR(sinhvien.ngay_sinh) AS tuoi, tinhthanh.TenTinhThanh, sinhvien.nuoc FROM(sinhvien INNER JOIN tinhthanh ON sinhvien.thanh_pho = tinhthanh.TenTinhThanh) WHERE sinhvien.nuoc = "VN"
 
 Cau 2: SELECT sinhvien.ten_sv, YEAR(CURRENT_DATE()) - YEAR(sinhvien.ngay_sinh) AS tuoi, tinhthanh.TenTinhThanh, nuoc.TenNuoc AS tennuoc, quoctich.TenNuoc AS QuocTich FROM(((sinhvien LEFT JOIN tinhthanh ON sinhvien.thanh_pho = tinhthanh.TenTinhThanh) LEFT JOIN quoctich ON SinhVien.quoc_tich = quoctich.MaNuoc) LEFT JOIN quoctich nuoc ON sinhvien.quoc_tich = nuoc.MaNuoc) WHERE sinhvien.nuoc = 'VN' AND sinhvien.quoc_tich = 'VN'
+
+Cau 3: SELECT sinhvien.ma_sv, sinhvien.ten_sv, diemhocchinhquy.mon_lp1, diemhocchinhquy.mon_lp2, diemhocchinhquy.mon_lp3, diemhocchinhquy.mon_lp4, diemhocchinhquy.mon_lp5 FROM `sinhvien` INNER JOIN diemhocchinhquy ON sinhvien.ma_sv = diemhocchinhquy.ma_sv
